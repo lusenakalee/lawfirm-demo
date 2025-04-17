@@ -1,21 +1,23 @@
 "use client";
 
-import Image from "next/image";
 import { motion } from "motion/react";
 import { OurSection } from "./OurSection";
 
 export function HeroSection() {
   return (
-    <div className="relative my-10 w-full    flex-col items-center justify-center">
+    <div className="relative my-10 w-full     flex-col items-center justify-center">
+      
+
       <div className="absolute inset-y-0 left-0 h-full w-px bg-neutral-200/80 dark:bg-neutral-800/80">
-        <div className="absolute top-0 h-40 w-px bg-gradient-to-b from-transparent via-blue-500 to-transparent" />
+        <div className="absolute top-0 h-40 w-px bg-gradient-to-b from-transparent via-neutral-500 to-transparent" />
       </div>
       <div className="absolute inset-y-0 right-0 h-full w-px bg-neutral-200/80 dark:bg-neutral-800/80">
-        <div className="absolute h-40 w-px bg-gradient-to-b from-transparent via-blue-500 to-transparent" />
+        <div className="absolute h-40 w-px bg-gradient-to-b from-transparent via-neutral-500 to-transparent" />
       </div>
       <div className="absolute inset-x-0 bottom-0 h-px w-full bg-neutral-200/80 dark:bg-neutral-800/80">
-        <div className="absolute mx-auto h-px w-40 bg-gradient-to-r from-transparent via-blue-500 to-transparent" />
+        <div className="absolute mx-auto h-px w-40 bg-gradient-to-r from-transparent via-neutral-500 to-transparent" />
       </div>
+  
       <div className=" px-4 py-10 md:py-20">
         <h1 className="relative z-10 mx-auto max-w-4xl text-center text-2xl font-bold text-slate-700 md:text-4xl lg:text-7xl dark:text-slate-300">
           {"Expert Knowledge & Commercially aware"
@@ -49,7 +51,7 @@ export function HeroSection() {
           }}
           className="relative z-10 mx-auto max-w-xl py-4 text-center text-lg font-normal text-neutral-600 dark:text-neutral-400"
         >
-          With a commitment to safeguarding our client's rights with integrity
+          With a commitment to safeguarding our client&apos;s rights with integrity
           and expertise, we offer legal services that prioritize our
           clients&apos; best interests.
         </motion.p>
@@ -86,7 +88,7 @@ export function HeroSection() {
             duration: 0.3,
             delay: 1.2,
           }}
-          className="relative  z-10 mt-20 rounded-3xl border border-neutral-200 bg-neutral-100 p-4 shadow-md dark:border-neutral-800 dark:bg-neutral-900"
+          className="relative  z-10 mt-20 rounded-3xl border border-neutral-200 bg-neutral-100 p-0 md:p-4 shadow-md dark:border-neutral-800 dark:bg-neutral-900"
         >
          <OurSection />
         </motion.div>

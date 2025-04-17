@@ -352,13 +352,8 @@ export type ALL_CATEGORIES_QUERYResult = Array<{
 
 // Source: ./sanity/lib/posts/getAllPosts.ts
 // Variable: ALL_POSTS_QUERY
-// Query: *[_type == "product"] | order(name asc)
-export type ALL_POSTS_QUERYResult = Array<never>;
-
-// Source: ./sanity/lib/posts/getPostBySlug.ts
-// Variable: POST_BY_ID_QUERY
-// Query: *[_type == "post" && slug. current == $slug] | order(name asc) [0]
-export type POST_BY_ID_QUERYResult = {
+// Query: *[_type == "post"] | order(name asc)
+export type ALL_POSTS_QUERYResult = Array<{
   _id: string;
   _type: "post";
   _createdAt: string;
@@ -433,6 +428,76 @@ export type POST_BY_ID_QUERYResult = {
     _type: "image";
     _key: string;
   }>;
+}>;
+
+// Source: ./sanity/lib/posts/getPostBySlug.ts
+// Variable: POST_BY_ID_QUERY
+// Query: *[_type == "post" && slug.current == $slug][0]{      title,      _createdAt,      mainImage,      body,      "authors": authors[]->{        name,        image      },      "categories": categories[]->{        title      }    }
+export type POST_BY_ID_QUERYResult = {
+  title: string | null;
+  _createdAt: string;
+  mainImage: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+  } | null;
+  body: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "normal";
+    listItem?: "bullet";
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  } | {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+    _key: string;
+  }> | null;
+  authors: Array<{
+    name: string | null;
+    image: {
+      asset?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      };
+      media?: unknown;
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      _type: "image";
+    } | null;
+  }> | null;
+  categories: Array<{
+    title: string | null;
+  }> | null;
 } | null;
 
 // Source: ./sanity/lib/posts/getPostsByCategory.ts
@@ -515,14 +580,65 @@ export type POSTS_BY_CATEGORY_QUERYResult = Array<{
   }>;
 }>;
 
+// Source: ./sanity/lib/team/getAllAuthors.ts
+// Variable: ALL_AUTHORS_QUERY
+// Query: *[_type == "author"] | order(name asc)
+export type ALL_AUTHORS_QUERYResult = Array<{
+  _id: string;
+  _type: "author";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  name?: string;
+  slug?: Slug;
+  image?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
+  position?: string;
+  PracticeHead?: string;
+  Email?: string;
+  YOR?: string;
+  Qualifications?: string;
+  Status?: string;
+  MainPracticeAreas?: string;
+  bio?: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "normal";
+    listItem?: never;
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  }>;
+}>;
+
 // Query TypeMap
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
     "\n*[\n_type == \"expertise\"\n] | order(name asc)\n": ALL_EXPERTISES_QUERYResult;
     "\n*[\n\n  _type == \"category\"\n] | order(name asc)\n": ALL_CATEGORIES_QUERYResult;
-    "\n*[\n\n_type == \"product\"\n] | order(name asc)\n": ALL_POSTS_QUERYResult;
-    "\n*[_type == \"post\" && slug. current == $slug\n] | order(name asc) [0]": POST_BY_ID_QUERYResult;
+    "\n*[\n\n_type == \"post\"\n] | order(name asc)\n": ALL_POSTS_QUERYResult;
+    "\n\n*[_type == \"post\" && slug.current == $slug][0]{\n      title,\n      _createdAt,\n      mainImage,\n      body,\n      \"authors\": authors[]->{\n        name,\n        image\n      },\n      \"categories\": categories[]->{\n        title\n      }\n    }\n  \n  ": POST_BY_ID_QUERYResult;
     "\n*[\n_type == \"post\"\n&& references(*[_type == \"category\" && slug.current == $categorySlug]._id)\n] | order(name asc)\n": POSTS_BY_CATEGORY_QUERYResult;
+    "\n*[\n_type == \"author\"\n] | order(name asc)\n": ALL_AUTHORS_QUERYResult;
   }
 }

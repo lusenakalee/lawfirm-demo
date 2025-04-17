@@ -1,14 +1,14 @@
-import Link from "next/link";
-
 import { getAllPosts } from "@/sanity/lib/posts/getAllPosts";
 import BlogList from "@/components/BlogList";
-import { getAllCategories } from "@/sanity/lib/posts/getAllCategories";
+// import { getAllCategories } from "@/sanity/lib/posts/getAllCategories";
+// import { Category, Post } from "@/sanity.types";
 
-const options = { next: { revalidate: 30 } };
+
+
 
 export default async function IndexPage() {
   const posts = await getAllPosts();
-  const categories = await getAllCategories();
+  // const categories = await getAllCategories();
 
   console.log("posts in bloglist", posts);
   if (!posts) { 
@@ -20,10 +20,11 @@ export default async function IndexPage() {
 
 
   return (
-    <main className="">
+    <main className="p-8">
       <hr className="border-gray-700 mb-10" />
       <div>
-        <BlogList posts={posts} categories={categories} />
+      {/* categories={categories} */}
+        <BlogList posts={posts}  />
       </div>
     </main>
   );

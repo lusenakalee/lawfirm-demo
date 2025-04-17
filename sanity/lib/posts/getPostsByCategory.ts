@@ -18,10 +18,10 @@ _type == "post"
       },
     });
 
-    // Return the list of products, or an empty array if none are found
+    // Return the list of posts, or an empty array if none are found
     return posts.data || [];
   } catch (error) {
-    console.error("Error fetching products by category:", error);
+    console.error("Error fetching posts by category:", error);
     return [];
   }
 };

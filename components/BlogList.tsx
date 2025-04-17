@@ -1,29 +1,21 @@
-import { Category, Post } from "@/sanity.types";
-import { imageUrl } from "@/lib/imageUrl";
-
-import Image from "next/image";
-import Link from "next/link";
-import React from "react";
-import { PortableText } from "@portabletext/react";
-import { IconArrowUpRight } from "@tabler/icons-react";
-import CategorySelectorComponent from "./CategorySelectorComponent";
+import {  Post } from "@/sanity.types";
 import PostGrid from "./PostGrid";
 
 interface BlogListProps {
   posts: Post[];
-  categories: Category[];
+  // categories: Category[];
 
 }
 
-export default function BlogList({ posts , categories}: BlogListProps) {
+export default function BlogList({ posts }: BlogListProps) {
   return (
     <div className=" flex flex-col">
       {/* categories */}
-      <div className=" w-full sm:w-[200px]">
+      {/* <div className=" w-full sm:w-[200px]">
          <CategorySelectorComponent categories={categories} />
-      </div>
+      </div> */}
 
-      {/* products */}
+      {/* posts */}
       <div className="flex-1">
         <div>
         <PostGrid posts={posts} /> 

@@ -3,8 +3,22 @@ import { sanityFetch } from "../live";
 
 export const getPostBySlug = async (slug: string) => {
   const POST_BY_ID_QUERY = defineQuery(`
-*[_type == "post" && slug. current == $slug
-] | order(name asc) [0]`);
+
+*[_type == "post" && slug.current == $slug][0]{
+      title,
+      _createdAt,
+      mainImage,
+      body,
+      "authors": authors[]->{
+        name,
+        image
+      },
+      "categories": categories[]->{
+        title
+      }
+    }
+  
+  `);
 
   try {
     // Use sanityFetch to send the query with the slug as a paramete

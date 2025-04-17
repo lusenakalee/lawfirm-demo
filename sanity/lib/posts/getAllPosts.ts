@@ -5,7 +5,7 @@ export const getAllPosts = async () => {
   const ALL_POSTS_QUERY = defineQuery(`
 *[
 
-_type == "product"
+_type == "post"
 ] | order(name asc)
 `);
 
