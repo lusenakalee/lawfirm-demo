@@ -12,7 +12,7 @@ export function OurSection() {
 const SkeletonOne = () => {
   return (
     <div>
-      <p className="font-bold md:text-4xl text-xl text-white">
+      <p className="font-bold  md:text-4xl text-xl text-white">
       Our value proposition
       </p>
       <p className="font-normal text-base text-white"></p>

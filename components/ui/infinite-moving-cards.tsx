@@ -9,12 +9,14 @@ export const InfiniteMovingCards = ({
   direction = "left",
   speed = "fast",
   pauseOnHover = true,
+  pauseOnPress = true,
   className,
 }: {
    expertises: Expertise[];
   direction?: "left" | "right";
   speed?: "fast" | "normal" | "slow";
   pauseOnHover?: boolean;
+  pauseOnPress?: boolean;
   className?: string;
 }) => {
   const containerRef = React.useRef<HTMLDivElement>(null);
@@ -80,6 +82,8 @@ export const InfiniteMovingCards = ({
           "flex w-max min-w-full shrink-0 flex-nowrap gap-4 py-4",
           start && "animate-scroll",
           pauseOnHover && "hover:[animation-play-state:paused]",
+          pauseOnPress && "active:[animation-play-state:paused]",
+          
         )}
       >
         {expertises.map((expertise) => (

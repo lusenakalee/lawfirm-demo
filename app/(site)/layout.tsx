@@ -101,13 +101,7 @@ export default function RootLayout({
                   </Link>
                 ))}
                 <div className="flex w-full flex-col gap-4">
-                  <NavbarButton
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    variant="primary"
-                    className="w-full"
-                  >
-                    Login
-                  </NavbarButton>
+                 
                   <NavbarButton
                     onClick={() => setIsMobileMenuOpen(false)}
                     variant="primary"
@@ -119,7 +113,7 @@ export default function RootLayout({
               </MobileNavMenu>
             </MobileNav>
           </Navbar>
-          <div className="container mx-auto p-8 pt-24">{children}</div>
+          <div className="container mx-auto  pt-24">{children}</div>
         </div>
         <Footer/>
       </body>

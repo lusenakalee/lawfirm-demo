@@ -30,7 +30,7 @@ export const LayoutGrid = ({ cards }: { cards: Card[] }) => {
       {cards.map((card, i) => (
         <div key={i} className={cn(card.className, "")}>
           <div className="absolute flex items-center justify-center z-10 m-24 ">
-<span className="inline-flex items-center rounded-md bg-gray-50 px-2 py-1 text-xs font-medium text-gray-600 ring-1 ring-gray-500/10 ring-inset">{card.title}</span>
+<span className="inline-flex items-center rounded-md bg-gray-50/70 px-2 py-1 text-xs font-medium text-gray-600/90 ring-1 ring-gray-500/10 ring-inset">{card.title}</span>
             </div>
 <motion.div
             onClick={() => handleClick(card)}

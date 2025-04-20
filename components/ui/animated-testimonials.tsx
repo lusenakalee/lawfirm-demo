@@ -42,9 +42,9 @@ export const AnimatedTestimonials = ({
   };
   return (
     <div className="mx-auto max-w-sm px-4 py-20 font-sans antialiased md:max-w-4xl md:px-8  lg:px-12">
-      <div className="relative grid grid-cols-1 gap-20 ">
+      <div className="relative grid grid-cols-1 md:grid-cols-2 gap-10 ">
         <div>
-          <div className="relative  h-48 w-1/4">
+          <div className="relative  h-48 md:w-1/2">
             <AnimatePresence>
               {authors.map((author, index) => (
                 <motion.div
@@ -115,6 +115,7 @@ export const AnimatedTestimonials = ({
               {authors[active].position}
             </p>
             <motion.p className="mt-8 text-lg text-gray-500 dark:text-neutral-300">
+            <b>Main area of Practice: </b> 
               {(authors[active].MainPracticeAreas ?? "").split(" ").map(
                 (word, index) => (
                   <motion.span

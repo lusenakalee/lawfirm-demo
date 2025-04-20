@@ -17,10 +17,10 @@ export default function TeamValues() {
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 md:flex gap-4 w-full ">
-          <div className="team members border-r-2 border-gray-400 w-3/4">
+          <div className=" border-b-2 md:border-b-0 border-r-0 md:border-r-2 border-gray-400 w-full md:w-3/4">
             <Teams />
           </div>
-          <div className="w-1/4   ">
+          <div className=" w-full md:w-1/4   ">
             <OurValues />
           </div>
         </div>

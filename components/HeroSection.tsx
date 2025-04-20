@@ -88,7 +88,7 @@ export function HeroSection() {
             duration: 0.3,
             delay: 1.2,
           }}
-          className="relative  z-10 mt-20 rounded-3xl border border-neutral-200 bg-neutral-100 p-0 md:p-4 shadow-md dark:border-neutral-800 dark:bg-neutral-900"
+          className="relative  z-10 mt-20 rounded-3xl border border-neutral-200 bg-neutral-100  md:p-4 shadow-md dark:border-neutral-800 dark:bg-neutral-900"
         >
          <OurSection />
         </motion.div>
