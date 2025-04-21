@@ -173,7 +173,7 @@ export type Post = {
     _key: string;
     [internalGroqTypeReferenceTo]?: "category";
   }>;
-  experties?: Array<{
+  expertises?: Array<{
     _ref: string;
     _type: "reference";
     _weak?: boolean;
@@ -389,7 +389,7 @@ export type ALL_POSTS_QUERYResult = Array<{
     _key: string;
     [internalGroqTypeReferenceTo]?: "category";
   }>;
-  experties?: Array<{
+  expertises?: Array<{
     _ref: string;
     _type: "reference";
     _weak?: boolean;
@@ -432,7 +432,7 @@ export type ALL_POSTS_QUERYResult = Array<{
 
 // Source: ./sanity/lib/posts/getPostBySlug.ts
 // Variable: POST_BY_ID_QUERY
-// Query: *[_type == "post" && slug.current == $slug][0]{      title,      _createdAt,      mainImage,      body,      "authors": authors[]->{        name,        image      },      "categories": categories[]->{        title      }    }
+// Query: *[_type == "post" && slug.current == $slug][0]{      title,      _createdAt,      mainImage,      body,      "authors": authors[]->{        name,        position,        image      },      "categories": categories[]->{        title      },      "expertises": expertises[]->{        title      }    }
 export type POST_BY_ID_QUERYResult = {
   title: string | null;
   _createdAt: string;
@@ -482,6 +482,7 @@ export type POST_BY_ID_QUERYResult = {
   }> | null;
   authors: Array<{
     name: string | null;
+    position: string | null;
     image: {
       asset?: {
         _ref: string;
@@ -496,6 +497,9 @@ export type POST_BY_ID_QUERYResult = {
     } | null;
   }> | null;
   categories: Array<{
+    title: string | null;
+  }> | null;
+  expertises: Array<{
     title: string | null;
   }> | null;
 } | null;
@@ -539,7 +543,7 @@ export type POSTS_BY_CATEGORY_QUERYResult = Array<{
     _key: string;
     [internalGroqTypeReferenceTo]?: "category";
   }>;
-  experties?: Array<{
+  expertises?: Array<{
     _ref: string;
     _type: "reference";
     _weak?: boolean;
@@ -637,7 +641,7 @@ declare module "@sanity/client" {
     "\n*[\n_type == \"expertise\"\n] | order(name asc)\n": ALL_EXPERTISES_QUERYResult;
     "\n*[\n\n  _type == \"category\"\n] | order(name asc)\n": ALL_CATEGORIES_QUERYResult;
     "\n*[\n\n_type == \"post\"\n] | order(name asc)\n": ALL_POSTS_QUERYResult;
-    "\n\n*[_type == \"post\" && slug.current == $slug][0]{\n      title,\n      _createdAt,\n      mainImage,\n      body,\n      \"authors\": authors[]->{\n        name,\n        image\n      },\n      \"categories\": categories[]->{\n        title\n      }\n    }\n  \n  ": POST_BY_ID_QUERYResult;
+    "\n\n*[_type == \"post\" && slug.current == $slug][0]{\n      title,\n      _createdAt,\n      mainImage,\n      body,\n      \"authors\": authors[]->{\n        name,\n        position,\n        image\n      },\n      \"categories\": categories[]->{\n        title\n      },\n      \"expertises\": expertises[]->{\n        title\n      }\n    }\n  \n  ": POST_BY_ID_QUERYResult;
     "\n*[\n_type == \"post\"\n&& references(*[_type == \"category\" && slug.current == $categorySlug]._id)\n] | order(name asc)\n": POSTS_BY_CATEGORY_QUERYResult;
     "\n*[\n_type == \"author\"\n] | order(name asc)\n": ALL_AUTHORS_QUERYResult;
   }

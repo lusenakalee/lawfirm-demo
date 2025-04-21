@@ -11,9 +11,13 @@ export const getPostBySlug = async (slug: string) => {
       body,
       "authors": authors[]->{
         name,
+        position,
         image
       },
       "categories": categories[]->{
+        title
+      },
+      "expertises": expertises[]->{
         title
       }
     }

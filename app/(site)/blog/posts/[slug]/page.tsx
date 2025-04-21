@@ -1,106 +1,104 @@
-import React from 'react'
+import React from "react";
+import { imageUrl } from "@/lib/imageUrl";
+import { getPostBySlug } from "@/sanity/lib/posts/getPostBySlug";
+import { PortableText } from "next-sanity";
+import { notFound } from "next/navigation";
+import Image from "next/image";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Badge } from "@/components/ui/badge";
+import { CalendarIcon, ClockIcon, MessageSquare } from "lucide-react";
 
-export default function page() {
+export default async function PostPage({
+  params,
+}: {
+  params: { slug: string };
+}) {
+  const { slug } = params;
+  const post = await getPostBySlug(slug);
+  if (!post) return notFound();
+
   return (
-    <div>page</div>
-  )
+    <div className="container mx-auto px-4 py-8 max-w-4xl">
+      {/* Main post image */}
+      <div className="relative w-full h-64 md:h-96 mb-6 rounded-lg overflow-hidden">
+        {post.mainImage && (
+          <Image
+            src={imageUrl(post.mainImage).url()}
+            alt={"post image"}
+            fill
+            className="object-cover"
+            priority
+          />
+        )}
+      </div>
+
+      {/* Post metadata and author */}
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6">
+        {post.authors && post.authors.length > 0 && (
+          <div className="flex items-center gap-4 mb-4 md:mb-0">
+            {post.authors[0]?.image && (
+              <Avatar className="h-12 w-12 border-2 border-background">
+                <AvatarImage
+                  src={imageUrl(post.authors[0].image).url()}
+                  alt="Author"
+                />
+                <AvatarFallback>JD</AvatarFallback>
+              </Avatar>
+            )}
+            <div>
+              <h3 className="font-medium">
+                {" "}
+                {post.authors[0]?.name || "Unknown Author"}
+              </h3>
+              <p className="text-sm text-muted-foreground">
+                {" "}
+                {post.authors[0]?.position || "Unknown Author"}
+              </p>
+            </div>
+          </div>
+        )}
+
+        <div className="flex flex-wrap gap-2">
+          <div className="flex items-center text-sm text-muted-foreground">
+            <CalendarIcon className="mr-1 h-4 w-4" />
+            <span>
+              {" "}
+              {new Date(post._createdAt).toLocaleDateString("en-US", {
+                day: "numeric",
+                month: "long",
+                year: "numeric",
+              })}
+            </span>
+          </div>
+        </div>
+      </div>
+
+      {/* expertises */}
+      <div className="flex flex-wrap gap-2 mb-6">
+        {post.expertises?.map((expertise, index) =>
+          expertise?.title ? (
+            <Badge variant="secondary">{expertise.title}</Badge>
+          ) : null
+        )}
+      </div>
+
+
+        {/* Post title */}
+        <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
+       {post.title}
+      </h1>
+
+       {/* Post content */}
+       <div className="prose prose-slate max-w-none">
+        {Array.isArray(post.body) && (
+          <PortableText value={post.body} />
+        )}
+        </div>
+
+
+
+
+
+    </div>
+  );
 }
-
-
-
-
-
-// import { imageUrl } from "@/lib/imageUrl";
-// import { getPostBySlug } from "@/sanity/lib/posts/getPostBySlug";
-// import { PortableText } from "next-sanity";
-// import Image from "next/image";
-// import { notFound } from "next/navigation";
-
-// async function PostPage({ params }: { params: { slug: string } }) {
-//   const { slug } = params;
-//   const post = await getPostBySlug(slug);
-
-//   if (!post) return notFound();
-
-//   return (
-//     <article className="px-10 pb-28">
-//       <section className="space-y-2 border border-emphasize">
-//         <div className="min-h-56 relative flex flex-col justify-between md:flex-row">
-//           <div className="absolute top-0 h-full w-full p-10 opacity-20 blur-sm">
-//             {post.mainImage && (
-//               <Image
-//                 className="mx-auto object-cover object-center"
-//                 src={imageUrl(post.mainImage).url()}
-//                 alt={ "post image"}
-//                 fill
-//               />
-//             )}
-//           </div>
-
-//           <section className="w-full bg-emphasize p-5">
-//             <div className="flex flex-col justify-between gap-y-5 md:flex-row">
-//               <div>
-//                 <h1 className="text-4xl font-extrabold">{post.title}</h1>
-//                 <p>
-//                   {new Date(post._createdAt).toLocaleDateString("en-US", {
-//                     day: "numeric",
-//                     month: "long",
-//                     year: "numeric",
-//                   })}
-//                 </p>
-//               </div>
-
-//               {post.authors && post.authors.length > 0 && (
-//                 <div className="flex items-center space-x-2">
-//                   {post.authors[0]?.image && (
-//                     <Image
-//                       className="h-10 w-10 rounded-full"
-//                       src={imageUrl(post.authors[0].image).url()}
-//                       alt={post.authors[0].name || "Author"}
-//                       width={40}
-//                       height={40}
-//                     />
-//                   )}
-//                   <div className="w-64">
-//                     <h3 className="text-lg font-bold">
-//                       {post.authors[0]?.name || "Unknown Author"}
-//                     </h3>
-//                   </div>
-//                 </div>
-//               )}
-//             </div>
-
-//             <div>
-//               {post.body && (
-//                 <div className="pt-10 italic">
-//                   <PortableText  value={post.body} />
-//                 </div>
-//               )}
-
-//               <div className="mt-auto flex items-center justify-end space-x-2 flex-wrap">
-//                 {post.categories?.map((category, index) =>
-//                   category?.title ? (
-//                     <p
-//                       key={index}
-//                       className="mt-4 rounded-full bg-gray-800 px-3 py-1 text-sm font-semibold text-white"
-//                     >
-//                       {category.title}
-//                     </p>
-//                   ) : null
-//                 )}
-//               </div>
-//             </div>
-//           </section>
-//         </div>
-//       </section>
-
-//       <div className="prose max-w-none mb-6">
-//         {Array.isArray(post.body) && (
-//           <PortableText  value={post.body} />
-//         )}
-//       </div>
-//     </article>
-//   );
-// }
-
-// export default PostPage;
