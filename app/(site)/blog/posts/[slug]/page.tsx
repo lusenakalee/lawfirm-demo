@@ -6,7 +6,7 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
-import { CalendarIcon, ClockIcon, MessageSquare } from "lucide-react";
+import { CalendarIcon } from "lucide-react";
 
 export default async function PostPage({
   params,
@@ -77,7 +77,7 @@ export default async function PostPage({
       <div className="flex flex-wrap gap-2 mb-6">
         {post.expertises?.map((expertise, index) =>
           expertise?.title ? (
-            <Badge variant="secondary">{expertise.title}</Badge>
+            <Badge key={index} variant="secondary">{expertise.title}</Badge>
           ) : null
         )}
       </div>
