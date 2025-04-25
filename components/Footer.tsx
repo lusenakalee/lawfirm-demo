@@ -1,8 +1,7 @@
-import { getFooterContent } from "@/sanity/lib/footer/getFooterContent";
 import Image from "next/image";
+import Link from "next/link";
 
 export default async function Footer() {
-  const footerContent = await getFooterContent();
 
 
 
@@ -68,21 +67,21 @@ export default async function Footer() {
 
           <ul className="mt-8 space-y-4 text-sm">
             <li>
-              <a
+              <Link
                 className=" transition hover:text-gray-700/75 text-white dark:hover:text-white/75"
                 href="/"
               >
                Home
-              </a>
+              </Link>
             </li>
 
             <li>
-              <a
+              <Link
                 className=" transition hover:text-gray-700/75 text-white dark:hover:text-white/75"
                 href="/#expertise"
               >
                Expertise
-              </a>
+              </Link>
             </li>
 
            
