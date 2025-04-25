@@ -68,6 +68,31 @@ export type Geopoint = {
   alt?: number;
 };
 
+export type Phone = {
+  _id: string;
+  _type: "phone";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  number?: string;
+  label?: string;
+};
+
+export type FooterContent = {
+  _id: string;
+  _type: "footerContent";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  phoneNumbers?: Array<{
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    _key: string;
+    [internalGroqTypeReferenceTo]?: "phone";
+  }>;
+};
+
 export type Value = {
   _id: string;
   _type: "value";
@@ -320,7 +345,7 @@ export type SanityImageMetadata = {
   isOpaque?: boolean;
 };
 
-export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | Value | Expertise | Author | Post | Category | Slug | BlockContent | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata;
+export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | Phone | FooterContent | Value | Expertise | Author | Post | Category | Slug | BlockContent | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./sanity/lib/expertise/getAllExpertise.ts
 // Variable: ALL_EXPERTISES_QUERY
@@ -334,6 +359,24 @@ export type ALL_EXPERTISES_QUERYResult = Array<{
   title?: string;
   slug?: Slug;
   description?: string;
+}>;
+
+// Source: ./sanity/lib/footer/getFooterContent.ts
+// Variable: FOOTER_CONTENT_QUERY
+// Query: *[ _type == "footerContent" ] | order(name asc)
+export type FOOTER_CONTENT_QUERYResult = Array<{
+  _id: string;
+  _type: "footerContent";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  phoneNumbers?: Array<{
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    _key: string;
+    [internalGroqTypeReferenceTo]?: "phone";
+  }>;
 }>;
 
 // Source: ./sanity/lib/posts/getAllCategories.ts
@@ -639,6 +682,7 @@ import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
     "\n*[\n_type == \"expertise\"\n] | order(name asc)\n": ALL_EXPERTISES_QUERYResult;
+    "\n*[ \n_type == \"footerContent\" \n] | order(name asc)\n": FOOTER_CONTENT_QUERYResult;
     "\n*[\n\n  _type == \"category\"\n] | order(name asc)\n": ALL_CATEGORIES_QUERYResult;
     "\n*[\n\n_type == \"post\"\n] | order(name asc)\n": ALL_POSTS_QUERYResult;
     "\n\n*[_type == \"post\" && slug.current == $slug][0]{\n      title,\n      _createdAt,\n      mainImage,\n      body,\n      \"authors\": authors[]->{\n        name,\n        position,\n        image\n      },\n      \"categories\": categories[]->{\n        title\n      },\n      \"expertises\": expertises[]->{\n        title\n      }\n    }\n  \n  ": POST_BY_ID_QUERYResult;

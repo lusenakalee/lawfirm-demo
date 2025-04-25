@@ -1,12 +1,11 @@
-import React from "react";
-import { imageUrl } from "@/lib/imageUrl";
-import { getPostBySlug } from "@/sanity/lib/posts/getPostBySlug";
-import { PortableText } from "next-sanity";
-import { notFound } from "next/navigation";
-import Image from "next/image";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
+import { imageUrl } from "@/lib/imageUrl";
+import { getPostBySlug } from "@/sanity/lib/posts/getPostBySlug";
 import { CalendarIcon } from "lucide-react";
+import { PortableText } from "next-sanity";
+import Image from "next/image";
+import { notFound } from "next/navigation";
 
 export default async function PostPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;

@@ -1,6 +1,11 @@
+import { getFooterContent } from "@/sanity/lib/footer/getFooterContent";
 import Image from "next/image";
 
-export default function Footer() {
+export default async function Footer() {
+  const footerContent = await getFooterContent();
+
+
+
   return (
     <footer className="bg-black text-gray-300">
   <div className="mx-auto max-w-screen-xl px-4 pt-16 pb-6 sm:px-6 lg:px-8 lg:pt-24">
@@ -42,13 +47,14 @@ export default function Footer() {
 
         <ul className="mt-8 flex justify-center gap-6 sm:justify-start md:gap-8">
         
-          <li>
-          <a href="https://www.linkedin.com/company/coghlan-welsh-and-guest/" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-linkedin h-6 w-6"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg><span className="sr-only">LinkedIn</span></a>
+        {footerContent?.phoneNumbers?.map((phone: any) => (
+          <li key={phone._id}>
+            <a href={`tel:${phone.number}`} className="hover:text-primary transition-colors">
+              {phone.label ? `${phone.label}: ` : ''}
+              {phone.number}
+            </a>
           </li>
-
-          <li>
-          <a href="mailto:email@cwg.co.zw" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-mail h-6 w-6"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg><span className="sr-only">Email</span></a>
-          </li>         
+        ))}        
 
          
         </ul>
@@ -90,101 +96,7 @@ export default function Footer() {
           <p className="text-lg font-medium text-white">Call Us</p>
 
           <ul className="mt-8 space-y-4 text-sm">
-            
-
-            <li>
-              <a
-                className="flex items-center justify-center gap-1.5 ltr:sm:justify-start rtl:sm:justify-end"
-               href="tel:+263242794930"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="size-5 shrink-0  shadow-sm text-white"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
-                  />
-                </svg>
-
-                <span className="flex-1 text-white">+263-242-794930</span>
-              </a>
-            </li>
-
-            <li>
-              <a
-                className="flex items-center justify-center gap-1.5 ltr:sm:justify-start rtl:sm:justify-end"
-               href="tel:+263242704933"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="size-5 shrink-0  shadow-sm text-white"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
-                  />
-                </svg>
-
-                <span className="flex-1 text-white">+263-242-704933</span>
-              </a>
-            </li>
-            <li>
-              <a
-                className="flex items-center justify-center gap-1.5 ltr:sm:justify-start rtl:sm:justify-end"
-              href="tel:+263242704935"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="size-5 shrink-0  shadow-sm text-white"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
-                  />
-                </svg>
-
-                <span className="flex-1 text-white">+263-242-704935</span>
-              </a>
-            </li>
-            <li>
-              <a
-                className="flex items-center justify-center gap-1.5 ltr:sm:justify-start rtl:sm:justify-end"
-               href="tel:+263712237347"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="size-5 shrink-0  shadow-sm text-white"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
-                  />
-                </svg>
-
-                <span className="flex-1 text-white">+263-712-237347</span>
-              </a>
-            </li>
+             
             <li>
               <a
                 className="flex items-center justify-center gap-1.5 ltr:sm:justify-start rtl:sm:justify-end"
