@@ -19,8 +19,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Coghlan, Welsh & Guest",
-  description: "Expert Knowledge & Commercially awareness in law",
+  title: "Law Demo Site",
+  description: "A demo site for a law firm",
 };
 
 export default async function RootLayout({

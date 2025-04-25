@@ -13,8 +13,7 @@ export async function Expertise() {
               <div className="w-full lg:w-6/12 px-4">
                 <h2 className="text-4xl font-semibold">Our Expertise </h2>
                 <p className="text-lg leading-relaxed m-4 text-gray-600">
-                With a deep understanding of the law and a client-first approach, we provide strategic, effective solutions across a broad range of legal areas—always with integrity, precision, and unwavering commitment to protecting your rights.
-                </p>
+                With years of experience across diverse legal fields, our firm is equipped to handle complex legal challenges with precision and integrity. We offer specialized services tailored to meet the unique needs of individuals, businesses, and institutions.                </p>
               </div>
             </div>
           </div>

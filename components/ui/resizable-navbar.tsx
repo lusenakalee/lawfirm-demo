@@ -237,12 +237,12 @@ export const NavbarLogo = () => {
       className="relative z-20 mr-4 flex items-center space-x-2 px-2 py-1 text-sm font-normal text-black"
     >
       <Image
-        src="/images/cwgLogoBlack.png"
+        src="/images/LogoBlack.png"
         alt="logo"
         width={60}
         height={60}
       />
-      {/* <span className="font-medium text-black dark:text-white">Coghlan, Welsh and Guest</span> */}
+      {/* <span className="font-medium text-black dark:text-white">This is a law demo site </span> */}
     </Link>
   );
 };
@@ -265,7 +265,7 @@ export const NavbarButton = ({
   | React.ComponentPropsWithoutRef<"button">
 )) => {
   const baseStyles =
-    "px-4 py-2 rounded-md bg-white button bg-white text-black text-sm font-bold relative cursor-pointer hover:-translate-y-0.5 transition duration-200 inline-block text-center";
+    "px-4 py-2 rounded-r-full bg-white button bg-white text-black text-sm font-bold relative cursor-pointer hover:-translate-y-0.5 transition duration-200 inline-block text-center";
 
   const variantStyles = {
     primary:

@@ -20,7 +20,7 @@ export function HeroSection() {
   
       <div className=" px-4 py-10 md:py-20">
         <h1 className="relative z-10 mx-auto max-w-4xl text-center text-2xl font-bold text-slate-700 md:text-4xl lg:text-7xl dark:text-slate-300">
-          {"Expert Knowledge & Commercially aware"
+          {"Law Firm Website Template for Your Legal Practice"
             .split(" ")
             .map((word, index) => (
               <motion.span
@@ -51,9 +51,7 @@ export function HeroSection() {
           }}
           className="relative z-10 mx-auto max-w-xl py-4 text-center text-lg font-normal text-neutral-600 dark:text-neutral-400"
         >
-          With a commitment to safeguarding our client&apos;s rights with integrity
-          and expertise, we offer legal services that prioritize our
-          clients&apos; best interests.
+         This is a professional and customizable website template designed specifically for law firms, legal consultants, and attorneys. It features a clean layout, dedicated sections for team profiles, practice areas, and client testimonials—providing a strong foundation for showcasing your legal services and building trust with potential clients.
         </motion.p>
         <motion.div
           initial={{
@@ -68,12 +66,16 @@ export function HeroSection() {
           }}
           className="relative z-10 mt-8 flex flex-wrap items-center justify-center gap-4"
         >
-          <button className="w-60 transform rounded-lg bg-black px-6 py-2 font-medium text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-gray-800 dark:bg-white dark:text-black dark:hover:bg-gray-200">
-            Explore Now
+          <a href="mailto:lusenakalee@gmail.com?cc=sharahwa@gmail.com&subject=law%20site%20template%20request" >
+          <button className="w-60 transform  bg-black px-6 py-2 font-medium text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-gray-800 dark:bg-white dark:text-black dark:hover:bg-gray-200">
+           
+           
+            Get Template
           </button>
-          <button className="w-60 transform rounded-lg border border-gray-300 bg-white px-6 py-2 font-medium text-black transition-all duration-300 hover:-translate-y-0.5 hover:bg-gray-100 dark:border-gray-700 dark:bg-black dark:text-white dark:hover:bg-gray-900">
-            Consult Us
-          </button>
+          </a>
+          {/* <button className="w-60 transform rounded-lg border border-gray-300 bg-white px-6 py-2 font-medium text-black transition-all duration-300 hover:-translate-y-0.5 hover:bg-gray-100 dark:border-gray-700 dark:bg-black dark:text-white dark:hover:bg-gray-900">
+            Get Template
+          </button> */}
         </motion.div>
         <motion.div
           initial={{

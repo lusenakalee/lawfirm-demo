@@ -11,9 +11,7 @@ export default function TeamValues() {
             Meet our leadership & Values
           </h2>
           <p className="mt-6 text-lg/8 text-gray-600">
-            We&apos;re a dynamic group of individuals who are passionate about
-            what we do and dedicated to delivering the best results for our
-            clients.
+          At the heart of our firm is a commitment to integrity, professionalism, and client-focused service. Our team of dedicated legal professionals brings together a wealth of experience and a shared passion for justice. 
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 md:flex gap-4 w-full ">

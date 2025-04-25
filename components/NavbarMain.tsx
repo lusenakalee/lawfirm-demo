@@ -1,15 +1,15 @@
 "use client"
 
 import {
-  MobileNav,
-  MobileNavHeader,
-  MobileNavMenu,
-  MobileNavToggle,
-  Navbar,
-  NavbarButton,
-  NavbarLogo,
-  NavBody,
-  NavItems,
+    MobileNav,
+    MobileNavHeader,
+    MobileNavMenu,
+    MobileNavToggle,
+    Navbar,
+    NavbarButton,
+    NavbarLogo,
+    NavBody,
+    NavItems,
 } from "@/components/ui/resizable-navbar";
 import Link from "next/link";
 import { useState } from "react";
@@ -20,10 +20,7 @@ import { useState } from "react";
 
 export default function NavbarMain() {
     const navItems = [
-        {
-          name: "Features",
-          link: "#features",
-        },
+        
         {
           name: "Expertise",
           link: "#expertise",
@@ -54,7 +51,7 @@ export default function NavbarMain() {
               <NavItems items={navItems} />
               <div className="flex items-center gap-4">
                 <NavbarButton variant="secondary">Notifications</NavbarButton>
-                <NavbarButton variant="primary">Consult Us</NavbarButton>
+                <NavbarButton variant="primary">Get Template</NavbarButton>
               </div>
             </NavBody>
 
@@ -89,7 +86,10 @@ export default function NavbarMain() {
                     variant="primary"
                     className="w-full"
                   >
-                    Consult Us
+                              <a href="mailto:lusenakalee@gmail.com?cc=sharahwa@gmail.com&subject=law%20site%20template%20request" >
+
+                    Get Template
+                    </a>
                   </NavbarButton>
                 </div>
               </MobileNavMenu>

@@ -42,19 +42,19 @@ export default async function Footer() {
                   d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
                 />
               </svg>
-          Cecil House 2 Central Avenue (corner Second Street)Harare, Zimbabwe
+          To get this template <a href="mailto:lusenakalee@gmail.com?cc=sharahwa@gmail.com&subject=law%20site%20template%20request" className="underline mx-2" > Email Us here</a>
+
         </p>
 
         <ul className="mt-8 flex justify-center gap-6 sm:justify-start md:gap-8">
         
-        {footerContent?.phoneNumbers?.map((phone: any) => (
-          <li key={phone._id}>
-            <a href={`tel:${phone.number}`} className="hover:text-primary transition-colors">
-              {phone.label ? `${phone.label}: ` : ''}
-              {phone.number}
+       
+          <li >
+            <a href="" className="hover:text-primary transition-colors">
+              +12345678
             </a>
           </li>
-        ))}        
+             
 
          
         </ul>
@@ -70,7 +70,7 @@ export default async function Footer() {
             <li>
               <a
                 className=" transition hover:text-gray-700/75 text-white dark:hover:text-white/75"
-                href="#"
+                href="/"
               >
                Home
               </a>
@@ -79,7 +79,7 @@ export default async function Footer() {
             <li>
               <a
                 className=" transition hover:text-gray-700/75 text-white dark:hover:text-white/75"
-                href="#"
+                href="/#expertise"
               >
                Expertise
               </a>
@@ -100,7 +100,7 @@ export default async function Footer() {
             <li>
               <a
                 className="flex items-center justify-center gap-1.5 ltr:sm:justify-start rtl:sm:justify-end"
-               href="tel:+263772161230"
+               href="tel:+12345678"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -117,7 +117,7 @@ export default async function Footer() {
                   />
                 </svg>
 
-                <span className="flex-1 text-white">+263-772-161230</span>
+                <span className="flex-1 text-white">+123 456 789</span>
               </a>
             </li>
 
@@ -145,7 +145,7 @@ export default async function Footer() {
         </p>
 
         <p className="mt-4 text-sm text-gray-500 sm:order-first sm:mt-0 dark:text-gray-400">
-          &copy; 2025 Coghlan, Welsh & Guest. All rights reserved.
+          &copy; 2025 This is a law demo site .
         </p>
       </div>
     </div>
